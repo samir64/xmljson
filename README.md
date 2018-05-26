@@ -7,10 +7,10 @@ It's realy easy to use!
 ## Functions
 
 ```php
-function XmlJson($attributePrefix = "_", $innerTextLable = "#value"); // Constructor
+function XmlJson(string $attributePrefix = "_", string $innerTextLable = "#value"); // Constructor
 
 function toJson(SimpleXMLElement $xml);
-function toXml(array $json, $root = "root");
+function toXml(array $json, string $root = "root");
 ```
 
 ## Sample
