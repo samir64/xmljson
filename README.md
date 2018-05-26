@@ -9,8 +9,8 @@ It's realy easy to use!
 ```php
 function XmlJson(string $attributePrefix = "_", string $innerTextLable = "#value"); // Constructor
 
-function toJson(SimpleXMLElement $xml);
-function toXml(array $json, string $root = "root");
+function toJson(SimpleXMLElement $xml): array;
+function toXml(array $json, string $root = "root"): SimpleXMLElement;
 ```
 
 ## Sample
