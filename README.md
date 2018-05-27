@@ -7,7 +7,7 @@ It's realy easy to use!
 ## Functions
 
 ```php
-function XmlJson(string $attributePrefix = "_", string $innerTextLable = "#value"); // Constructor
+function XmlJson(string $attributePrefix = "@", string $innerTextLable = "#text"); // Constructor
 
 function toJson(SimpleXMLElement $xml): array;
 function toXml(array $json, string $root = "root"): SimpleXMLElement;
