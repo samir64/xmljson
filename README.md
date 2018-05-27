@@ -76,28 +76,28 @@ $jsonArr = $xmlJson->toJson($xmlDoc);
     "book": [
         {
             "title": {
-                "_lang": "en",
-                "#value": "Everyday Italian"
+                "@lang": "en",
+                "#text": "Everyday Italian"
             },
             "author": "Giada De Laurentiis",
             "year": "2005",
             "price": "30.00",
-            "_category": "cooking"
+            "@category": "cooking"
         },
         {
             "title": {
-                "_lang": "en",
-                "#value": "Harry Potter"
+                "@lang": "en",
+                "#text": "Harry Potter"
             },
             "author": "J K. Rowling",
             "year": "2005",
             "price": "29.99",
-            "_category": "children"
+            "@category": "children"
         },
         {
             "title": {
-                "_lang": "en",
-                "#value": "XQuery Kick Start"
+                "@lang": "en",
+                "#text": "XQuery Kick Start"
             },
             "author": [
                 "James McGovern",
@@ -108,18 +108,18 @@ $jsonArr = $xmlJson->toJson($xmlDoc);
             ],
             "year": "2003",
             "price": "49.99",
-            "_category": "web"
+            "@category": "web"
         },
         {
             "title": {
-                "_lang": "en",
-                "#value": "Learning XML"
+                "@lang": "en",
+                "#text": "Learning XML"
             },
             "author": "Erik T. Ray",
             "year": "2003",
             "price": "39.95",
-            "_category": "web",
-            "_cover": "paperback"
+            "@category": "web",
+            "@cover": "paperback"
         }
     ]
 }
