@@ -13,6 +13,18 @@ function toJson(SimpleXMLElement $xml): array;
 function toXml(array $json, string $root = "root"): SimpleXMLElement;
 ```
 
+## Convert method's table
+
+| Pattern | XML                                                                  | JSON                                       |
+| ------- | -------------------------------------------------------------------- | ------------------------------------------ |
+| 1       | &lt;e/&gt;                                                           | "e": null                                  |
+| 2       | &lt;e&gt;text&lt;/e&gt;                                              | "e": "text"                                |
+| 3       | &lt;e name="value" /&gt;                                             | "e":{"@name": "value"}                     |
+| 4       | &lt;e name="value"&gt;text&lt;/e&gt;                                 | "e": { "@name": "value", "#text": "text" } |
+| 5       | &lt;e&gt; &lt;a&gt;text&lt;/a&gt; &lt;b&gt;text&lt;/b&gt; &lt;/e&gt; | "e": { "a": "text", "b": "text" }          |
+| 6       | &lt;e&gt; &lt;a&gt;text&lt;/a&gt; &lt;a&gt;text&lt;/a&gt; &lt;/e&gt; | "e": { "a": ["text", "text"] }             |
+| 7       | &lt;e&gt; text &lt;a&gt;text&lt;/a&gt; &lt;/e&gt;                    | "e": { "#text": "text", "a": "text" }      |
+
 ## Sample
 
 ### Make instance
