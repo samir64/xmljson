@@ -13,7 +13,7 @@ class XmlJson
     {
         $result = array();
 
-        foreach ($xmlElement as $child => $value) {
+        foreach ($xmlElement->children() as $child => $value) {
             $result[$child][] = $this->json($value);
         }
 
@@ -36,11 +36,26 @@ class XmlJson
             }
         }
 
+        if (is_array($result)) {
+            if (count($result) == 0) {
+                $result = null;
+            } else {
+                foreach ($result as $key => $value) {
+                    if (count($result[$key]) == 0) {
+                        $result[$key] = null;
+                    }
+                }
+            }
+        }
+
         return $result;
     }
 
     private function xml(array $jsonItem, SimpleXMLElement $root, SimpleXmlElement $parent)
     {
+        if (array_key_exists($this->innerTextLable, $jsonItem)) {
+            $root[] = $jsonItem[$this->innerTextLable];
+        }
         foreach ($jsonItem as $key => $value) {
             if (is_array($value)) {
                 // $LOGGER_VARIABLES = $key;
@@ -58,21 +73,21 @@ class XmlJson
                     $child = $root->addChild($key);
                     $this->xml($value, $child, $root);
                 }
-            } else {
+            } elseif ($key != $this->innerTextLable) {
                 if (is_numeric($key)) {
                     if ($key == 0) {
                         $root[0] = $value;
                     } else {
                         $parent->addChild($root->getName(), $value);
                     }
-                } elseif ($key == $this->innerTextLable) {
-                    $root[0] = $value;
+                // } elseif ($key == $this->innerTextLable) {
+                //     $root[] = $value;
                 } elseif (substr($key, 0, strlen($this->attributePrefix)) == $this->attributePrefix) {
                     $root->addAttribute(substr($key, strlen($this->attributePrefix)), $value);
                 } else {
                     $root->addChild($key, $value);
                 }
-                // $LOGGER_VARIABLES = [$key => $value];
+                // $LOGGER_VARIABLES = [$key => $value, "Result" => str_replace("<", "&lt;", $parent->asXML())];
                 // LOGGER(__FILE__, __METHOD__, __LINE__, function () use ($LOGGER_VARIABLES) {
                 //     var_dump($LOGGER_VARIABLES);
                 // });
