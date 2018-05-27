@@ -95,7 +95,7 @@ class XmlJson
         }
     }
 
-    public function __construct($attributePrefix = "_", $innerTextLable = "#value")
+    public function __construct($attributePrefix = "@", $innerTextLable = "#text")
     {
         $this->attributePrefix = $attributePrefix;
         $this->innerTextLable = $innerTextLable;
